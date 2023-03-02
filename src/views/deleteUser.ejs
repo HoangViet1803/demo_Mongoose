@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./layouts/head.ejs") %>
+    <title>Delete</title>
+</head>
+
+<body class="container mt-5">
+    <h1 class="text-center">Are you sure to delete this user?</h1>
+    <!-- <%= JSON.stringify(userEdit) %> -->
+    <form action="/delete-user" method="post" class="ms-5 me-5">
+        <div class="mb-3" style="display: none;">
+            <input type="text" class="form-control" name="userId" value="<%= userEdit.id %>">
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username" value="<%= userEdit.name %>" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="<%= userEdit.email %>" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city" value="<%= userEdit.city %>" disabled>
+        </div>
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    </form>
+    <%- include("./layouts/script.ejs") %>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./layouts/head.ejs") %>
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/create">Create User</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h3>List User</h3>
+        <table class="table table-secondary">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% listUsers.forEach(function(user) { %>
+                <tr>
+
+                    <th scope="row"><%= user.id %></th>
+                    <td><%= user.name %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.city %></td>
+                    <td>
+                        <button class="btn btn-primary"><a style="color: aliceblue; text-decoration: none;"
+                                href="/update/<%= user.id %>">Edit</a></button>
+                        <form action="/delete-user/<%= user.id %>" method="get" style="display: inline;">
+                            <button class="btn btn-danger me-2">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+
+        </table>
+    </div>
+    <%- include("./layouts/script.ejs") %>
+</body>
+
+</html>
